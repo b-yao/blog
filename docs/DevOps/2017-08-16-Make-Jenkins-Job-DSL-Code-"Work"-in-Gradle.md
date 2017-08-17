@@ -1,9 +1,10 @@
+# Make Jenkins Job DSL Code "Work" in Gradle
 ## Problem
-When we use [seedjob](https://wiki.jenkins.io/display/JENKINS/Job+DSL+Plugin) or [Jenkins job DSL](https://jenkinsci.github.io/job-dsl-plugin/) to manage Jenkins jobs, normally we also use [Gradle](https://docs.gradle.org/4.0.1/dsl/) to run building and testing like these examples do: https://github.com/sheehan/job-dsl-gradle-example. However, the job DSL also have a lot of automatically generated [methods]( https://github.com/jenkinsci/job-dsl-plugin/wiki/Automatically-Generated-DSL), they are not available in the generic API viewer, but you can see them in your own API viewer. They have a nice little purple tag on the top left of the page, like this one:![Generated DSL method](Pics/Jenkins_Job_DSL_Generated_DSL.png)They are working just fine when running in Jenkins, but not when build or test with Gradle.
+When we use [seedjob](https://wiki.jenkins.io/display/JENKINS/Job+DSL+Plugin) or [Jenkins job DSL](https://jenkinsci.github.io/job-dsl-plugin/) to manage Jenkins jobs, normally we also use [Gradle](https://docs.gradle.org/4.0.1/dsl/) to run building and testing like these examples do: https://github.com/sheehan/job-dsl-gradle-example. However, the job DSL also have a lot of automatically generated [methods]( https://github.com/jenkinsci/job-dsl-plugin/wiki/Automatically-Generated-DSL), they are not available in the generic API viewer, but you can see them in your own API viewer. They have a nice little purple tag on the top left of the page, like this one:![Generated DSL method](../../Pics/Jenkins_Job_DSL_Generated_DSL.png)They are working just fine when running in Jenkins, but not when build or test with Gradle.
 
 ### In Web Interface
 The goal is to use the generated method in the above picture to report to JIRA when a Jenkins job has some info to be posted there. We want to use the explicit "selector" since we only want certain issue being updated. In job DSL this is a generated method, the non-generated method does not support explicit selector. It looks like this in web UI:
-![Update JIRA Issue by Explicit Selector](Pics/JIRA_Update_Relevant_Issue.png)
+![Update JIRA Issue by Explicit Selector](../../Pics/JIRA_Update_Relevant_Issue.png)
 
 ### Using Generated Method DSL
 This is my groovy method:
